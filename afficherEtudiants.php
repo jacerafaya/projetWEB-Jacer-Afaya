@@ -82,7 +82,7 @@
       </div>
     </div>
 
-    <div class="container">
+  <div class="container">
       <div class="row">
         <div class="table-responsive">
           <table class="table table-striped table-hover">
@@ -105,33 +105,89 @@
                 Classe
               </th>
             </tr>
-            <!--1er Etudiant-->
-            <tr>
-              <td>
-                1111
-              </td>
-              <td>
-                N1
-              </td>
-              <td>
-                P1
-              </td>
-              <td>
-                n1.p1@gmail.com
-              </td>
-              <td>
-                INFO1D
-              </td>
-            </tr>
+            <?php
+            include("./include/config.php");
+            $req = "SELECT * FROM etudiant";
+            $reponse = $pdo->query($req);
+            if ($reponse->rowCount() > 0) {
+              $outputs["etudiants"] = array();
+              while ($row = $reponse->fetch(PDO::FETCH_ASSOC)) {
+                echo "<tr>";
+                $etudiant = array();
+                $etudiant["cin"] = $row["cin"];
+                $etudiant["nom"] = $row["nom"];
+                $etudiant["prenom"] = $row["prenom"];
+                $etudiant["email"] = $row["email"];
+                $etudiant["classe"] = $row["Classe"];
+                array_push($outputs["etudiants"], $etudiant);
+                foreach ($etudiant as $value) {
+                  echo "<th> $value";
+                }
+              }
+            }
+
+            ?>
 
           </table>
           <br>
         </div>
-        <button type="button" class="btn btn-primary btn-block active">Actualiser</button>
+        <button type="submit" class="btn btn-primary btn-block active" onclick="refresh()">Actualiser</button>
       </div>
+
     </div>
 
   </main>
+  <script>
+    function refresh() {
+      var xmlhttp = new XMLHttpRequest();
+      var url = "http://localhost/projetweb/afficherEtudiants.php";
+
+      //Envoie de la requete
+      xmlhttp.open("GET", url, true);
+      xmlhttp.send();
+
+
+      //Traiter la reponse
+      xmlhttp.onreadystatechange = function() { // alert(this.readyState+" "+this.status);
+        if (this.readyState == 4 && this.status == 200) {
+
+          myFunction(this.responseText);
+          alert(this.responseText);
+          console.log(this.responseText);
+          //console.log(this.responseText);
+        }
+      }
+
+
+      //Parse la reponse JSON
+      function myFunction(response) {
+        var obj = JSON.parse(response);
+        //alert(obj.success);
+
+        if (obj.success == 1) {
+          var arr = obj.etudiants;
+          var i;
+          var out = "<table  border=1 >";
+          for (i = 0; i < arr.length; i++) {
+            out += "<tr><td>" +
+              arr[i].cin +
+              "</td><td>" +
+              arr[i].nom +
+              "</td><td>" +
+              arr[i].prenom +
+              "</td><td>" +
+              arr[i].adresse +
+              "</td><td>" +
+              arr[i].email +
+              "</td></tr>";
+          }
+          out += "</table>";
+          document.getElementById("demo").innerHTML = out;
+        } else document.getElementById("demo").innerHTML = "Aucune Inscriptions!";
+
+      }
+    }
+  </script>
 
 
   <footer class="container">
