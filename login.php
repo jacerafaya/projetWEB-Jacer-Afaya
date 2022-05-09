@@ -8,7 +8,7 @@ if (isset($_POST["submit"])) {
 
   include("./include/config.php");
   $sel = $pdo->prepare("select * from enseignant where login=? and pass=? limit 1");
-  $sel->execute(array($name, $password));
+  $sel->execute(array($name, md5($password)));
   $tab = $sel->fetchAll();
   if (count($tab) > 0) {
     session_start();
