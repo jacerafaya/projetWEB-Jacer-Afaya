@@ -108,17 +108,17 @@
       <div class="row">
         <div class="col-md-4">
           <h2>INFO1</h2>
-          <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
+          <p>gérer les étudiants INFO 1.</p>
           <p><a class="btn btn-secondary" href="#" role="button">Voir les Groupes &raquo;</a></p>
         </div>
         <div class="col-md-4">
           <h2>INFO2</h2>
-          <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
+          <p>gérer les étudiants INFO 2.</p>
           <p><a class="btn btn-secondary" href="#" role="button">Voir les Groupes &raquo;</a></p>
         </div>
         <div class="col-md-4">
           <h2>INFO3</h2>
-          <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
+          <p>gérer les étudiants INFO 3.</p>
           <p><a class="btn btn-secondary" href="#" role="button">Voir les Groupes &raquo;</a></p>
         </div>
       </div>
